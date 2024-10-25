@@ -80,3 +80,37 @@ giving the output error:
 
 error[E0384]: cannot assign twice to immutable variable `x`
 ```
+## Unused variables
+Is possible to ignore the Unused variable warning with prepending a underline to a variable.
+```rust
+fn main(){
+    let _x = 1;
+}
+```
+## Destructuring tuples
+If there's a need to mutate the values of a tuple is possible to destructure it by using let (mut x, mut y) = (value1, value2);
+```rust
+fn main() {
+    let (mut x, mut y) = (1, 2);
+    x += 2;
+
+    assert_eq!(x, 3);
+    assert_eq!(y, 2);
+
+    println!("Success!");
+}
+```
+
+## Ignore itens in tuples slice and structs
+```rust
+fn main() {
+    let (x, y);
+    (x,..) = (3, 4);
+    // x = 3 and y is ignored by ..
+    [.., y] = [1, 2];
+    // y = 2 and x is ignored by ..
+    assert_eq!([x,y], [3,2]);
+
+    println!("Success!");
+} 
+```
